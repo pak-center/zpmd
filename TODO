@@ -1,0 +1,7 @@
+TODO:
+
+-implement rest of records for z/VM 5.3
+-add possibility to choose which z/VM version from 5.3 to current zpmd have to work with
+-remove question about DCSS size
+-code fix
+
