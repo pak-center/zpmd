@@ -6,8 +6,12 @@
 [![Scc Count Badge](https://sloc.xyz/github/pak-center/zpmd/?category=blanks)](https://github.com/pak-center/zpmd/)
 ![GitHub repo size](https://img.shields.io/github/repo-size/pak-center/zpmd?style=plastic)
 ![GitHub](https://img.shields.io/github/license/pak-center/zpmd?style=plastic)
+
 ### Legacy code from BE thesis.
-Archive
+
+z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM mainframe. It processes and gathers data from DCSS used by Monitor System Service (*MONITOR). Records are written to MySQL database. 
+
+#### Archive
 ---
 
 [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
