@@ -14,6 +14,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 ### Features
 
 - works with z/VM V5.3 records only!
+- blocking read
 
 ### V0.9.0 alpha
 
