@@ -11,7 +11,7 @@
 
 z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM mainframe. It processes and gathers data from DCSS used by Monitor System Service (*MONITOR). Records are written to MySQL database. 
 
-# Changelog
+## Changelog
 
 ### Features >= v1.0.0 (not uploaded on github yet)
 
@@ -32,7 +32,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
 - database engine InnoDB with indexes on tables
 
-### Supported Domains and Records by zpmd v0.9.0 & MySQL database INSERT
+## Supported Domains and Records by zpmd v0.9.0 & MySQL database INSERT
 
 | Domain | V5.3 Records | V5.3 handled | V5.3 tested |
 | :---: | :---: | :---: | :---: |
