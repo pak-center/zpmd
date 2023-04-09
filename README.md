@@ -13,7 +13,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 
 # Changelog
 
-### Features >= V1.0.0 (not uploaded on github yet)
+### Features >= v1.0.0 (not uploaded on github yet)
 
 - works with z/VM V5.3 records
 - may be extended to use other records e.g. z/VM V7.3
@@ -23,7 +23,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
 - database engine Archive without indexes on tables
 
-### Features <= V0.9.0 (current alpha)
+### Features <= v0.9.0 (current alpha)
 
 - works with z/VM V5.3 records
 - blocking read
@@ -31,6 +31,22 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - single buffer
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
 - database engine InnoDB with indexes on tables
+
+### Supported Domains and Records by zpmd v0.9.0 & MySQL database INSERT
+
+| Domain | V5.3 Records | V5.3 handled | V5.3 tested |
+| :---: | :---: | :---: | :---: |
+| 0 | 24 | 15 | 15 |
+| 1 | 20 | 11 | 11 |
+| 2 | 12 | 10 | 10 |
+| 3 | 20 | 20 | 20 |
+| 4 | 10 | 5 | 5 |
+| 5 | 12 | 9 | 9 |
+| 6 | 30 | 20 | 20 |
+| 7 | 1 | 1 | 1 |
+| 8 | 3 | 3 | 3 |
+| 9 | n/n | n/n | n/n |
+| 10 | 2 | 0 | 0 |
 
 ### TODO:
 
