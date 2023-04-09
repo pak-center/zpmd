@@ -21,6 +21,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - two threads (1st as main for DB INSERTS, 2nd for READ from /dev and buffers managing)
 - uses two buffers but needs 2x more memory (2x MONDCSS size)
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
+- database engine Archive without indexes on tables
 
 ### Features <= V0.9.0 (current alpha)
 
@@ -29,6 +30,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - single thread
 - single buffer
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
+- database engine InnoDB with indexes on tables
 
 ### TODO:
 
