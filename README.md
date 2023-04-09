@@ -34,19 +34,19 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 
 ## Supported Domains and Records by zpmd v0.9.0 & MySQL database INSERT
 
-| Domain | V5.3 Records | V5.3 handled | V5.3 tested |
-| :---: | :---: | :---: | :---: |
-| 0 | 24 | 15 | 15 |
-| 1 | 20 | 11 | 11 |
-| 2 | 12 | 10 | 10 |
-| 3 | 20 | 20 | 20 |
-| 4 | 10 | 5 | 5 |
-| 5 | 12 | 9 | 9 |
-| 6 | 30 | 20 | 20 |
-| 7 | 1 | 1 | 1 |
-| 8 | 3 | 3 | 3 |
-| 9 | n/n | n/n | n/n |
-| 10 | 2 | 0 | 0 |
+| Domain | V5.3 Records | V5.3 handled | V5.3 tested | % Progress |
+| :---: | :---: | :---: | :---: | :---: |
+| 0 | 24 | 15 | 15 | 63% |
+| 1 | 20 | 11 | 11 | 55% |
+| 2 | 12 | 10 | 10 | 83% |
+| 3 | 20 | 20 | 20 | Complete |
+| 4 | 10 | 5 | 5 | 50% |
+| 5 | 12 | 9 | 9 | 75% |
+| 6 | 30 | 20 | 20 | 67% |
+| 7 | 1 | 1 | 1 | Complete |
+| 8 | 3 | 3 | 3 | Complete |
+| 9 | n/n | n/n | n/n | n/n |
+| 10 | 2 | 0 | 0 | 0% |
 
 ### TODO:
 
