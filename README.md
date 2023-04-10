@@ -21,7 +21,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - two threads (1st as main for DB INSERTS, 2nd for READ from /dev and buffers managing)
 - uses two buffers but needs 2x more memory (2x MONDCSS size)
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
-- database engine Archive without indexes on tables
+- database engine = Archive without indexes on tables
 
 ### Features <= v0.9.0 (current alpha)
 
@@ -30,23 +30,23 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - single thread
 - single buffer
 - operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
-- database engine InnoDB with indexes on tables
+- database engine = InnoDB with indexes on tables
 
 ## Supported Domains and Records by zpmd v0.9.0 & MySQL database INSERT
 
-| Domain | V5.3 Records | V5.3 handled | V5.3 tested | % Progress |
-| :---: | :---: | :---: | :---: | :---: |
-| 0 | 24 | 15 | 15 | 63% |
-| 1 | 20 | 11 | 11 | 55% |
-| 2 | 12 | 10 | 10 | 83% |
-| 3 | 20 | 20 | 20 | Complete |
-| 4 | 10 | 5 | 5 | 50% |
-| 5 | 12 | 9 | 9 | 75% |
-| 6 | 30 | 20 | 20 | 67% |
-| 7 | 1 | 1 | 1 | Complete |
-| 8 | 3 | 3 | 3 | Complete |
-| 9 | n/n | n/n | n/n | n/n |
-| 10 | 2 | 0 | 0 | 0% |
+| Domain | V5.3 Records | V5.3 handled | % Progress |
+| :---: | :---: | :---: | :---: |
+| 0 | 24 | 15 | 63% |
+| 1 | 20 | 11 | 55% |
+| 2 | 12 | 10 | 83% |
+| 3 | 20 | 20 | Complete |
+| 4 | 10 | 5 | 50% |
+| 5 | 12 | 9 | 75% |
+| 6 | 30 | 20 | 67% |
+| 7 | 1 | 1 | Complete |
+| 8 | 3 | 3 | Complete |
+| 9 | n/n | n/n | n/n |
+| 10 | 2 | 0 | 0% |
 
 ### TODO:
 
