@@ -53,7 +53,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - [ ] implement full handling of z/VM 5.3 records set 
 - [ ] remove question about DCSS size
 - [X] code fix & rename variables names from Polish to English languge
-- [ ] refactoring code from legacy v0.9.0 to v1.0.0-alpha1
+- [X] refactoring code from legacy v0.9.0 to v1.0.0-alpha1
 
 ---
 
