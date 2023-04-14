@@ -7,7 +7,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/pak-center/zpmd?style=plastic)
 ![GitHub](https://img.shields.io/github/license/pak-center/zpmd?style=plastic)
 
-### Obsolete code from BE thesis.
+### Obsolete code from BE thesis to version v0.9.0.
 
 z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM mainframe. It processes and gathers data from DCSS used by Monitor System Service (*MONITOR). Records are written to MySQL database. 
 
