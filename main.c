@@ -26,7 +26,9 @@
 #include <signal.h>
 #include <unistd.h> //STDXX_FILENO
 //#include </usr/include/asm/div64.h>
-#include </usr/include/asm/types.h>
+//	old path	#include </usr/include/asm/types.h>
+#include </usr/include/asm-generic/types.h>
+
 #include </usr/include/mysql/mysql.h>
 
 typedef __uint64_t __eu64;
