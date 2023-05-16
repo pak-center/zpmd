@@ -20,7 +20,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - blocking READ (non-blocking READ is provided in Rust language project called zEM)
 - two threads (1st as main for DB INSERTS, 2nd for READ from /dev and buffers managing)
 - uses two buffers but needs 2x more memory (2x MONDCSS size)
-- operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
+- operates on MariaDB (single database - multiple tables, like d0r3 type records have their own table)
 - database engine = Archive without indexes on tables
 
 ### Features <= v0.9.0 (current alpha)
@@ -29,7 +29,7 @@ z/VM Performance Monitor Daemon: zpmd for z/Linux running under z/VM on IBM main
 - blocking read
 - single thread
 - single buffer
-- operates on MySQL DB (single database - multiple tables, like d0r3 type records have their own table)
+- operates on MySQL (single database - multiple tables, like d0r3 type records have their own table)
 - database engine = InnoDB with indexes on tables
 
 ## Supported Domains and Records by zpmd v0.9.0 & MySQL database INSERT
