@@ -17,8 +17,8 @@
 *  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _RECSTRUCT_H
-#define	_RECSTRUCT_H
+#ifndef _V53_RECORDS_H
+#define	_V53_RECORDS_H
 
 #ifdef	__cplusplus
 extern "C" {
@@ -272,6 +272,72 @@ DOMAIN-X, where X is a number of domain
         __u32 sytshs_qdglkcnt;
         __u32 sytshs_qdgdisks;
     };
+    struct d0r8 {
+        __u32 sytusr_sysusrs;
+        __u32 sytusr_srmcdorm;
+        __u64 sytusr_calmptrv;
+        __u32 sytusr_calmptct;
+        __u64 sytusr_calmpntr;
+        __u32 sytusr_calmpnct;
+        __u64 sytusr_caluptrv;
+        __u32 sytusr_caluptct;
+        __u64 sytusr_calupntr;
+        __u32 sytusr_calupnct;
+        __u64 sytusr_calqdntr;
+        __u32 sytusr_calqdnct;
+        __u32 sytusr_sysdiald;
+        __u32 sytusr_syslucnt;
+        __u32 sytusr_sysiopq;
+        __u8 sytusr_sysiopqh;
+        //1... .... sytusr_sysiopqa
+        __u8 sytusr_sysioplo;
+        __u8 sytusr_sysiophi;
+        __u8 ibm;
+    };
+    struct d0r9 {   //   TODO SAMPLE
+        __u8 filler[20];
+        __u32 sytcpc_hfcount;
+        __u32 sytcpc_hfchbusy[256];
+        __u32 sytcpc_hfchsim[51];
+    };
+    struct d0r10 {  //   TODO SAMPLE
+        __u8 filler[20];
+        __u16 sytscg_srmcdisp;
+        __u16 sytscg_srmcdldg;
+        __u16 sytscg_srmc1dsp;  
+        __u16 sytscg_srmc2dsp;
+        __u16 sytscg_srmc3dsp;
+        __u16 sytscg_srmc1elg;
+        __u16 sytscg_srmc2elg;
+        __u16 sytscg_srmc3elg;
+        __u16 sytscg_srmc1dld;
+        __u16 sytscg_srmc2dld;
+        __u16 sytscg_srmc3dld;
+        __u16 sytscg_srmc1eld;
+        __u16 sytscg_srmc2eld;
+        __u16 sytscg_srmc3eld;
+        __u64 sytscg_srme1ets; //tod
+        __u16 sytscg_srme2etf;
+        __u16 sytscg_srme3etf;
+        __s32 sytscg_srmabsdl;
+        __s32 sytscg_srmreldl;
+        __u32 sytscg_srmtotst;
+        __u32 sytscg_srmwssdl;
+        __u32 sytscg_srmwssd1;
+        __u32 sytscg_srmwssd2;
+        __u32 sytscg_srmwssd3;
+        __u32 sytscg_srmllcnt;
+        __u32 sytscg_srmconll;
+        __u64 sytscg_srmatod;
+        __u64 sytscg_srmatod2;
+        __u32 ibm;
+        __u32 sytscg_calslkct;
+        __u64 sytscg_calslktm;
+        __u32 sytscg_caltlkct;
+        __u64 sytscg_caltlktm;
+        __u64 sytscg_srmcpuwt;
+    };
+
     struct d0r11
     {
         __u8 filler[20];
@@ -460,6 +526,60 @@ DOMAIN-X, where X is a number of domain
         __u16 sytcug_cpudedct;
         __u16 sytcug_cpushard;
     };
+    struct d0r16    //  TOD
+    {
+        __u8 filler[20];
+        __u8 sytcup_lcupname[8];
+        __u8 sytcup_lcuppnum;
+        __u8 sytcup_calflgs;
+        __u8 sytcup_lcupcpct;
+        __u8 ibm;
+        __s16 sytcup_calcpuof;
+        __s16 sytcup_calcpuln;
+        __u64 sytcup_lcutctod;
+        __u8 sytcup_lcptype[16];
+        __u8 sytcup_lcxpupid;
+        __u8 ibm[3];
+    };
+    struct d0r16ext    //  TOD
+    { //40 bytes fix length sytcup_cpudata
+        __u16 sytcup_lcucpuid;
+        __u16 sytcup_lcucwght;
+        __u8 sytcup_lcucflgs;                  
+        __u8 ibm;
+        __u64 sytcup_lcucactm;
+        __u64 sytcup_lcuclptm;
+        __u8 sytcup_lcxcptyp[16];
+        __u16 ibm2;
+    };
+
+    struct d0r17 { //TODO
+        __u8 filler[20];
+        __u8 sytcum_lcupcpct;
+        __u8 ibm[3];
+        __s16 sytcum_calmibof;
+        __s16 sytcum_calmibln;
+        __u64 sytcum_lcutctod;
+    };
+    struct d0r17ext {	//	sytcum_mibdata  //	TODO
+        __u16 sytcum_lcumcpu;
+        __u64 sytcum_lcumgtm;
+        __u8 sytcum_lcuptype[16]; //ebcdic string
+        __u16 ibm;
+    };
+    struct d0r18    //  TODO
+    {
+        __u8 filler[20];
+        __s32 sytcpm_chpathct;
+        __s32 sytcpm_chpathln;
+        __s32 sytcpm_caloffst;
+    };
+    struct d0r18ext //  TODO
+    {
+        __s32 sytcpm_chpbusy;
+        __u8 sytcpm_flag;
+        __u8 sytcpm_tstmp[3];
+    };
     struct d0r19
     {
         __u8 filler[20];
@@ -487,6 +607,75 @@ DOMAIN-X, where X is a number of domain
         __u8 sytsyg_vl3mname[8];	//String
         __u32 sytsyg_vl3caf;
         __u8 sytsyg_vl3cpnam[16];	//String
+    };
+    struct d0r20    //  TODO
+    {
+        __u8 filler[20];
+        __u8 sytepm_calchpid;
+        __u8 sytepm_caltype;
+        __u16 ibm;
+        __s32 sytepm_calofst1;
+        __s32 sytepm_calofst2;
+        __s32 sytepm_callen2;
+    };
+    struct d0r20ext1    //  TODO
+    {
+/*
+  0   0  structure   32  sytepm_ecmentry
+
+------------------
+
+__u8 sytepm_ecmcuiv;
+__u8 sytepm_ecmtstmp[3];
+  4   4  character   28  sytepm_ecmcmgd
+__u32 sytepm_ecmcpbt_cpc;
+__u32 sytepm_ecmcbc_cpc;
+__u32 sytepm_ecmmsnt;
+__u32 sytepm_ecmcpbt;
+__u32 sytepm_ecmccwu_cpc;
+__u32 sytepm_ecmmsnt_cpc;
+__u32 ibm;
+__u32 sytepm_ecmccwu;
+__u32 sytepm_ecmuats;
+__u32 ibm2;
+__u32 sytepm_ecmcduw_cpc;
+__u32 sytepm_ecmurb;
+__u32 ibm3;
+__u32 sytepm_ecmcduw;
+__u32 sytepm_ecmurb_cpc;
+__u32 ibm4;
+__u32 sytepm_ecmcdur_cpc;
+__u32 sytepm_ecmdus;
+__u32 ibm5;
+__u32 sytepm_ecmcdur;
+__u32 sytepm_ecmdus_cpc;
+
+
+  0   0  structure   32  sytepm_csccmcbd
+
+*/
+    };
+    struct d0r20ext2    //  TODO
+    {
+        __u8 sytepm_csccmcfl;
+        __u16 ibm;
+        __u8 sytepm_csccmccp;
+        __u8 sytepm_csccmccv;
+        __u8 ibm2;
+        __u8 sytepm_csccmmgq;
+        __u8 sytepm_csccmcmg;
+        __u32 ibm3;
+        __u8 sytepm_csccmcmd[20];
+        __u32 sytepm_csccmcmb;
+        __u32 sytepm_csccmcdu;
+        __u32 sytepm_csccmcmc;
+        __u32 sytepm_csccmcdp;
+        __u32 sytepm_csccmcmw;
+        __u32 sytepm_csccmcms;
+        __u32 sytepm_csccmcmr;
+        __u32 sytepm_csccmcmp;
+        __u32 sytepm_csccmcmu;
+        __u32 ibm4;
     };
     struct d0r21
     {
@@ -531,6 +720,34 @@ DOMAIN-X, where X is a number of domain
         __u8 sytsxp_pfxcputy;
         __u8 ibm2[3];
     };
+    struct d0r23 { //  TODO
+        __u8 filler[20];
+        __u32 sytlck_calnmlks;
+        __u16 sytlck_calentsz;
+        __u16 sytlck_calentdsp;
+        __u32 ibm;
+    // link to sytlck_calents
+    };
+    struct d0r23ext { //  TODO
+        //sytlck_callkdata
+        __u8 filler[d0r23->sytlck_calentdsp];
+        __u8 sytlck_callckid[8];
+        __u32 sytlck_calxscnt;
+        __u64 sytlck_calxtime;
+        __u32 sytlck_calsscnt;
+        __u64 sytlck_calstime;
+    };
+    struct d0r24 {  //  TODO
+        __u8 filler[20];
+        __u8 sytspt_caltype;
+        __u8 ibm[3];
+        __u64 sytspt_srxatod;
+        __u64 sytspt_srxatod2;
+        __s32 sytspt_srxreldl;
+        __s32 sytspt_srxabsdl;
+        __u32 sytspt_srxllcnt;
+        __u32 sytspt_srxconll;    
+    };
 
 //DOMAIN-1
     struct d1r1
@@ -539,6 +756,11 @@ DOMAIN-X, where X is a number of domain
         __u8 mtrepr_edomains;
         __u8 ibm;
         __u16 mtrepr_config;
+    };
+    struct d1r2 {   //  TODO
+        __u8 filler[20];
+        __u32 mtrecm_calbyct;
+        __u8 mtrecm_calcmd[mtrecm_calbyct]; //  TODO  //  ebcdic string
     };
     struct d1r3
     {
@@ -598,6 +820,93 @@ DOMAIN-X, where X is a number of domain
         __u8 mtrprp_pfxcputy;
         __u8 ibm2[3];
     };
+    struct d1r6ext {
+        __u8 mtrdev_edevpth[20];
+        __u8 ibm[2];
+        __u8 mtrdev_edevfcp[2];
+        __u8 mtrdev_edevwpn[8];
+        __u8 mtrdev_edevlun[8];
+    };
+    struct d1r6 { //    TODO
+        __u8 filler[20];
+        __u8 mtrdev_rdevtype;
+        __u8 mtrdev_rdevclas;
+        __u16 mtrdev_rdevdvid;
+        __u8 mtrdev_calmodln;
+        __u8 mtrdev_rdevlpm;
+        __u16 mtrdev_rdevdev;
+        __u32 mtrdev_rdevsid;
+        __u8 mtrdev_rdevchps[8];
+        __u8 mtrdev_rdevcuid[2]; // control unit id in packed decimal
+        __u8 mtrdev_rdevcumn;
+        __u8 mtrdev_calflags;
+        __u8 mtrdev_rdcrcuc; //real cu code
+        __u8 mtrdev_rdcobrco; //obr code
+        __u8 mtrdev_rdevser[6]; //dasd volume serial identifier
+        __u32 mtrdev_thrdlys;
+        __u64 mtrdev_thriorte;
+        __u32 mtrdev_calrdevsid;
+        __u16 mtrdev_calrdevdev;
+        __u8 mtrdev_rdevpvfg;
+        __u8 mtrdev_edevtype;
+        __u8 mtrdev_edevtabl[8];
+        d1r6ext mtrdev_edevpths[8];   //  TODO
+        __u8 mtrdev_prefpath;
+        __u8 mtrdev_edevattr;                    
+        __u16 mtrdev_rdevhppl;
+        __u8 mtrdev_caldevflags[4];
+        __u8 mtrdev_edevpathconn1;
+        __u8 mtrdev_edevpathconn2;
+        __u8 mtrdev_edevpathconn3;
+        __u8 mtrdev_edevpathconn4;
+        __u8 mtrdev_edevpathconn5;
+        __u8 mtrdev_edevpathconn6;
+        __u8 mtrdev_edevpathconn7;  
+        __u8 mtrdev_edevpathconn8;
+    };
+    struct d1r7 //  TODO
+    {
+        __u8 filler[20];
+        __u32 mtrmem_rsastore;
+        __u32 mtrmem_systors;
+        __u32 ibm;
+        __u32 ibm2;
+        __u32 mtrmem_systrac;
+        __u32 mtrmem_hcpmm1;    //  address
+        __u32 mtrmem_hcpmm4;    //  address
+        __u32 mtrmem_rsapgabl;
+        __u32 mtrmem_rsanonpg;
+        __u32 mtrmem_rsaoffln;
+        __u32 ibm3;
+        __u16 mtrmem_systrcpc;
+        __u8 mtrmem_flg1;
+        __u8 ibm4;
+        __u32 mtrmem_hcpmm0;     //  address
+        __u32 mtrmem_hcpsys;     //  address
+        __u32 mtrmem_calscmax;
+        __u32 mtrmem_sysscmex;
+        __u64 mtrmem_sysgtors;
+        __u64 mtrmem_rsagstor;
+        __u64 mtrmem_rsagoffl;
+        __u64 mtrmem_rsalgfrm;
+        __u32 mtrmem_sxssize;
+        __u64 mtrmem_pfxstlen;
+        __u64 mtrmem_pfxftlen;
+        __u64 mtrmem_rsafnoti;
+    };
+    struct d1r8 //  TODO
+    {
+        __u8 filler[20];
+        __u8 mtrpag_cpvolser[6];    //  ebcdic?  volume serial identifier
+        __u8 mtrpag_rdcpcyl;
+        __u8 mtrpag_calflags;                      
+        __u8 mtrpag_caltype[4];     //  'page' = paging space, 'spol' = spooling space
+        __s32 mtrpag_calcylno;
+        __s32 mtrpag_calstart;
+        __u32 mtrpag_rdevsid;
+        __u16 mtrpag_rdevdev;
+        __u16 ibm;
+    };
     struct d1r9
     {
         __u8 filler[20];
@@ -615,6 +924,93 @@ DOMAIN-X, where X is a number of domain
         __u8 filler[20];
         __eu64 mtrscm_caltod;
         __u32 mtrscm_calbyct;
+    };
+    struct d1r11 {
+        __u8 filler[20];
+        //  Interval End = empty record
+    };
+    struct d1r12 {  //  TODO
+        __u8 filler[20];
+        //   Event Record Start of Suspend
+    };
+    struct d1r13 {  //  TODO
+        __u8 filler[20];
+        //  End of Frame Indicator
+        /*  Indicates the end of data in a frame. Its presence
+            implies that there is another frame of data to
+            follow. For Sample, the last frame sent will not
+            have an end of frame record, but instead, an end of 
+            interval record. For event, there is no end of
+            frame nor end of interval record in the last frame sent.
+        */
+    };
+    struct d1r14    //  TODO
+    {
+        __u8 filler[20];
+        __u8 mtrddr_required[8];
+        __u8 mtrddr_profile[1]; //ebcdic
+        __u8 mtrddr_dmnumber;
+        __u8 mtrddr_dmstatus;
+        __u8 mtrddr_calflags;
+        __s32 mtrddr_dmitemct;
+    };
+    struct d1r14ext //  TODO
+    {
+
+    };
+    struct d1r15 {  //  TODO
+        __u8 filler[20];
+        //   Logged on User
+        __u8 mtrusr_vmduser[8];
+        __u16 mtrusr_vmdcpuad;
+        __u8 mtrusr_vmdmode;
+        __u8 mtrusr_vmdcpuct;
+        __u8 mtrusr_calstat;
+        __u8 mtrusr_calmode;
+        __u8 mtrusr_vmdstype;
+        __u8 mtrusr_calsharf;
+        __u32 mtrusr_vmdrelsh;
+        __u32 mtrusr_vmdabssh;
+        __u32 mtrusr_vmdssize;
+        __u8 mtrusr_vmdactno[8];
+        __u8 mtrusr_vmdgrpn[8];
+        __u32 mtrusr_vmdmxrvp;
+        __u64 mtrusr_caltodon;
+        __u8 mtrusr_vmdbyval[8];
+        __u32 mtrusr_vmdmxshr;
+        __u64 mtrusr_ascdefsz;
+        __u8 mtrusr_caldefhi[4];    //  high four bytes
+        __u8 mtrusr_caldeflo[4];    //  low four bytes
+        __u32 mtrusr_calcpct;
+        __u32 mtrusr_calzipct;
+        __u32 mtrusr_calzapct;
+        __u32 mtrusr_califlct;
+        __u8 mtrusr_vmdcfgem;       
+        __u8 mtrusr_vmdpust;                    
+        __u16 ibm;
+    };
+    struct d1r16    //  TODO
+    {
+        __u8 filler[20];
+        __u32 mtrsch_srmbiasi;
+        __u8 mtrsch_srmtslic[8];
+        __u8 mtrsch_srmtshot[8];
+        __u16 mtrsch_srmbiasd;
+        __u16 mtrsch_srmldgus;
+        __u32 mtrsch_srmp1ldg;
+        __u32 mtrsch_srmp2ldg;
+        __u32 mtrsch_srmp3ldg;
+        __u32 mtrsch_srmldgcp;
+        __u32 mtrsch_srmp1wss;
+        __u32 mtrsch_srmp2wss;
+        __u32 mtrsch_srmp3wss;
+        __u32 mtrsch_srmwssmp;
+        __u32 mtrsch_srml1dsp;
+        __u32 mtrsch_srml2dsp;
+        __u32 mtrsch_srml3dsp;
+        __u32 mtrsch_srmxpctg;
+        __u8 mtrsch_srmflags;
+        __u8 ibm[3];
     };
     struct d1r17
     {
@@ -847,6 +1243,47 @@ DOMAIN-X, where X is a number of domain
         __u8 sclael_vmdcfgem;
         __u8 sclael_vmdpust;
         __u8 ibm2[2];
+    };
+    struct d2r7 //  TODO
+    {
+        __filler[20];
+        __u32 sclsrm_srmbiasi;
+        __u16 sclsrm_srmbiasd;
+        __u8 sclsrm_srmtslic[8];
+        __u8 sclsrm_srmtshot[8];
+        __u16 sclsrm_srmldgus;
+        __u32 sclsrm_srmp1ldg;
+        __u32 sclsrm_srmp2ldg;
+        __u32 sclsrm_srmp3ldg;
+        __u32 sclsrm_srmldgcp;
+        __u32 sclsrm_srmp1wss;
+        __u32 sclsrm_srmp2wss;
+        __u32 sclsrm_srmp3wss;
+        __u32 sclsrm_srmwssmp;
+        __u32 sclsrm_srml1dsp;
+        __u32 sclsrm_srml2dsp;
+        __u32 sclsrm_srml3dsp;
+        __u32 sclsrm_srmxpctg;
+        __u8 sclsrm_srmflags;
+        __u8 ibm[3];
+    };
+    struct d2r8 //  TODO
+    {
+        __u8 filler[20];
+        __u8 sclstp_srmrsctm[8]; // reset interval size, u64 TOD?
+        __u16 sclstp_syspgrat;
+        __u16 ibm;
+        __u32 sclstp_srmsteal;
+        __u64 sclstp_srmstrd;
+        __u32 sclstp_srm1avws;
+        __u32 sclstp_srm1avpg;
+        __u32 sclstp_srmstsrw;
+        __u32 sclstp_srmapgde;
+        __u32 sclstp_srmawsde;
+        __u32 sclstp_srmpgsrw;
+        __u32  sclstp_srmepnf1;
+        __u32 sclstp_srmepnf2;
+        __u32 sclstp_srmepnf3;
     };
     struct d2r9
     {
@@ -1373,6 +1810,126 @@ DOMAIN-X, where X is a number of domain
     };
 
 //DOMAIN-4
+    struct d4r1 //  TODO
+    {
+        __u8 filler[20];
+        __u8 uselon_vmduser[8];
+        __u16 uselon_vmdcpuad;
+        __u8 uselon_vmdmode;
+        __u8 uselon_calstat;
+        __u32 uselon_vmdrelsh;
+        __u32 uselon_vmdabssh;
+        __u8 uselon_calmode;
+        __u8 uselon_vmdstype;
+        __u8 uselon_calsharf;
+        __u8 ibm;
+        __u32 uselon_vmdssize;
+        __u32 uselon_vmdmxrvp;
+        __u8 uselon_vmdactno[8];    //user accounting number
+        __u8 uselon_vmdgrpn[8];     //racf aci group name
+        __u64 uselon_caltodon;
+        __u8 uselon_vmdbyval[8];
+        __u32 uselon_vmdmxshr;
+        __u64 uselon_ascdefsz;
+        __u8 uselon_caldefhi[4];    //high four bytes
+        __u8 uselon_caldeflo[4];    //low four bytes
+    };
+        struct d4r2 //  TODO
+    {
+        __u8 filler[20];
+        __u8 uselof_vmduser[8];
+        __u16 uselof_vmdcpuad;
+        __u8 uselof_vmdmode;
+        __u8 uselof_calmode;
+        __u8 uselof_vmdslist;
+        __u8 uselof_vmdelist;
+        __u8 uselof_calflag1;
+        __u8 uselof_vmdstype;
+        __u64 uselof_vmdttime;
+        __u64 uselof_vmdvtime;
+        __u8 ibm;
+        __u8 ibm2;
+        __u32 uselof_vmdctpvr;
+        __u32 uselof_vmdctpvl;
+        __u32 uselof_vmdwsspr;
+        __u32 uselof_vmdctxbk;
+        __u32 uselof_calxstor;
+        __u32 uselof_vmdctflt;
+        __u32 ibm3;
+        __u32 uselof_vmdflreo;
+        __u32 uselof_vmdctorf;
+        __u32 uselof_calctpgs;
+        __u32 uselof_vmdctpwt;
+        __u32 uselof_calcppgr;
+        __u32 uselof_calcppgw;
+        __u32 uselof_vmdctspr;
+        __u32 uselof_vmdctspw;
+        __u32 uselof_vmdpgspl;
+        __u32 uselof_vmdvcsct;
+        __u32 uselof_vmdvdsct;
+        __u32 uselof_vmdvusct;
+        __u32 uselof_vmdvtsct;
+        __u32 uselof_vmdvosct;
+        __u32 uselof_calcppst;
+        __u32 uselof_vmdisevm;
+        __u32 uselof_vmdistvm;
+        __u32 uselof_vmdisuvm;
+        __u32 uselof_vmdvsevm;
+        __u32 uselof_vmdvstvm;
+        __u32 uselof_vmdvsuvm;
+        __u32 uselof_vmdx98ct;
+        __u32 uselof_calcpmig;
+        __u32 uselof_calcpxwt;
+        __u32 uselof_calcpxrd;
+        __u16 uselof_vmdasmct;
+        __u8 uselof_calsharf;
+        __u8 uselof_calostat;
+        __u32 uselof_vmdblkct;
+        __u32 uselof_vmdmdcia;
+        __u32 uselof_vmdcopct;
+        __u32 uselof_vmdctiso;
+        __u32 uselof_vmdrelsh;
+        __u32 uselof_vmdabssh;
+        __u32 uselof_vmdssize;
+        __u32 uselof_vmdmxrvp;
+        __u8 uselof_vmdactno[8];       // user accounting number
+        __u8 uselof_vmdgrpn[8];      //   racf aci group name
+        __u64 uselof_caltodon;
+        __u32 uselof_vmdvdisk;
+        __u32 uselof_vmdmxshr;
+        __u32 uselof_vmdthrct;
+        _u64 uselof_ascdefsz;
+        __u32 uselof_caldefhi;    //    high four bytes
+        __u32 uselof_caldeflo;    //    low four bytes
+        __u32 uselof_vmdctpvg;
+        __u32 uselof_vmdmvb2g;
+        __u32 uselof_vebalert;
+        __u32 uselof_vebtvsct;
+        __u32 uselof_vebsvsct;
+        __u32 uselof_vebtpiai;
+        __u32 uselof_vebvirai;
+        __u32 uselof_vebhdwai;
+        __u8 uselof_vmdctpvla[8];
+        __u32 uselof_vmdctshl;
+        ___u8 uselof_vmdctshla[8];
+        __u8 uselof_vmdputyp;
+        __u8 ibm4[3];
+        __u8uselof_vmdvtmp[8];
+        __u8 uselof_vmdttmp[8];
+        __u8uselof_vmdvtms[8];
+        __u8uselof_vmdttms[8];
+
+    };
+        struct d4r3 //  TODO
+    {
+        __u8 filler[20];
+
+    };
+        struct d4r4 //  TODO
+    {
+        __u8 filler[20];
+
+    };
     struct d4r5
     {
         __u8 filler[20];
@@ -1402,6 +1959,20 @@ DOMAIN-X, where X is a number of domain
         __u8 userdc_newputyp;
         __u8 userdc_vmdcfgem;
         __u8 userdc_vmdpust;
+    };
+    struct d4r8 //  TODO
+    {
+        __u8 filler[20];
+        __u8 usetre_vmduser[8];
+        __u16 usetre_vmdcpuad;
+        __u8 usetre_caltriv[2];
+        __u64 usetre_vmddqtod;
+        __u64 usetre_vmdsusck;
+        __u64 usetre_vmdmttod;
+        __u8 usetre_calflag1;
+        __u8 usetre_vmdputyp;
+        __u8 usetre_vmdcfgem;
+        __u8 usetre_vmdpust;
     };
     struct d4r9
     {
@@ -1602,6 +2173,14 @@ DOMAIN-X, where X is a number of domain
         __u8 prcprp_pfxcputy;
         __u8 ibm3[3];
     };
+    struct d5r4 {   //  TODO
+        __u8 filler[20];
+        //  (No longer available)
+    };
+        struct d5r5 {   //  TODO
+        __u8 filler[20];
+        //  (No longer available)
+    };
     struct d5r6
     {
         __u8 filler[20];
@@ -1655,6 +2234,92 @@ DOMAIN-X, where X is a number of domain
         __u8 prcapc_crynovpr[8];
         __u8 prcapc_crynovpc[8];
         __u8 prcapc_crynorpr[8];
+    };
+    struct d5r10    //  TODO
+    {
+        __u8 filler[20];
+        __u32 ibm;
+        __u16 prcapm_l2;
+        __u16 prcapm_rc;
+        __u32 ibm;
+        __u32 ibm2;
+        __u8 ibm3[3];
+        __u32 ibm4;
+    };
+    struct d5r10ext_hdr //  TODO
+    {
+        __u8 ibm;
+        __u8 prcapm_ct;
+        __u8 ibm2;
+        __u8 prcapm_ax;
+        __u32 prcapm_s;
+        __u32 prcapm_v;
+        __u32 ibm3;
+    };
+    struct d5r10ext1 //  TODO
+    {
+        d5r10ext_hdr;
+        __u64 prcapm_cmb1_t0;
+        __u64 prcapm_cmb1_c0;
+        __u64 prcapm_cmb1_t1;
+        __u64 prcapm_cmb1_c1;
+        __u8 ibm[16];
+    };
+    struct d5r10ext2 //  TODO
+    {
+        d5r10ext_hdr;
+        __u64 prcapm_cmb2_t0;
+        __u64 prcapm_cmb2_c0;
+        __u64 prcapm_cmb2_t1;
+        __u64 prcapm_cmb2_c1;
+        __u64 prcapm_cmb2_t2;
+        __u64 prcapm_cmb2_c2;
+        __u64 prcapm_cmb2_t3;
+        __u64 prcapm_cmb2_c3;
+        __u64 prcapm_cmb2_t4;
+        __u64 prcapm_cmb2_c4;
+        __u64 prcapm_cmb2_t5;
+        __u64 prcapm_cmb2_c5;
+        __u64 prcapm_cmb2_t6;
+        __u64 prcapm_cmb2_c6;
+        __u64 prcapm_cmb2_t7;
+        __u64 prcapm_cmb2_c7;
+        __u64 prcapm_cmb2_t8;
+        __u64 prcapm_cmb2_c8;
+        __u64 prcapm_cmb2_t9;
+        __u64 prcapm_cmb2_c9;
+        __u64 prcapm_cmb2_t10;
+        __u64 prcapm_cmb2_c10;
+        __u64 prcapm_cmb2_t11;
+        __u64 prcapm_cmb2_c11;
+        __u64 prcapm_cmb2_t12;
+        __u64 prcapm_cmb2_c12;
+        __u64 prcapm_cmb2_t13;
+        __u64 prcapm_cmb2_c13;
+        __u64 prcapm_cmb2_t14;
+        __u64 prcapm_cmb2_c14;
+        __u64 prcapm_cmb2_t15;
+        __u64 prcapm_cmb2_c15;
+        __u64 prcapm_cmb2_t16;
+        __u64 prcapm_cmb2_c16;
+        __u64 prcapm_cmb2_t17;
+        __u64 prcapm_cmb2_c17;
+        __u64 prcapm_cmb2_t18;
+        __u64 prcapm_cmb2_c18;
+        __u64 prcapm_cmb2_t19;
+        __u64 prcapm_cmb2_c19;
+    };
+    struct d5r10ext3   //  TODO
+    {
+        d5r10ext_hdr;
+        __u64 prcapm_cmb3_t0;
+        __u64 prcapm_cmb3_c0;
+        __u64 prcapm_cmb3_t1;
+        __u64 prcapm_cmb3_c1;
+        __u64 prcapm_cmb3_t2;
+        __u64 prcapm_cmb3_c2;
+        __u64 prcapm_cmb3_t3;
+        __u64 prcapm_cmb3_c3;
     };
     struct d5r11
     {
@@ -1989,6 +2654,96 @@ DOMAIN-X, where X is a number of domain
         __u16 iodvof_rdevdev;
         __u16 ibm;
     };
+    struct d6r3 {   //  TODO
+        __u8 ioddev_rdevaflg;
+        __u8 ioddev_rdevlpm;
+        __u8 ioddev_vdeviop1;                
+        __u8 ioddev_calflag1;
+        __u32 ioddev_rdevsid;
+        __u8 ioddev_rdevchps[8];
+        __u8 ioddev_rdevser[6];
+        __u8 ioddev_caluser[8];
+        __u16 ioddev_rdevlcnt;
+        __u16 ioddev_scmssch;
+        __u16 ioddev_scmcount;
+        __u32 ioddev_scmcntim;
+        __u32 ioddev_scmfptim;
+        __u32 ioddev_scmddtim;
+        __u32 ioddev_hfrdevct;
+        __u32 ioddev_hfctio;
+        __u32 ioddev_rdevctsr;
+        __u32 ioddev_rdevrcwh;
+        __u32 ioddev_rdevrcwp;
+        __u64 ioddev_rdevrtpd;
+        __u32 ioddev_rdevctsi;
+        __u32 ioddev_rdevctui;
+        __u32 ioddev_rdevmict;
+        __u32 ioddev_rdevctrg;
+        __u32 ioddev_rdevctrd;
+        __u32 ioddev_rdevskct;
+        __u32 ioddev_rdevsksm;
+        __u32 ioddev_rdevwrct;
+        __u32 ioddev_rdevrdct;
+        __u32 ioddev_rdevmcia;
+        __u32 ioddev_viucntin;
+        __u32 ioddev_viutimin;
+        __u32 ioddev_viucntlv;
+        __u32 ioddev_viutimlv;
+        __u32 ioddev_viucntot;
+        __u32 ioddev_viutimot;
+        __u32 ioddev_scmdatim;
+        __u64 ioddev_viustamp;
+        __u8 ioddev_viustate;
+        __u8 ibm[3];
+        __u32 ioddev_thrdlys;
+        __u32 ioddev_scmcqtim;
+        __u32 ioddev_scmdbtim;
+        __u32 ioddev_scmirtim;
+        __u32 ioddev_scgssch;
+        __u32 ioddev_scgcount;
+        __u16 ioddev_rdevdev;
+        __u16 ibm2;
+        __u8 ioddev_edevtype;
+        __u8 ioddev_prefpath;
+        __u16 ibm3;
+        __u32 ioddev_pavinelg;
+        __u32 ioddev_pavuses;
+        __u8 ioddev_rdevpvfg;
+        __u8 ibm4;
+        __u16 ioddev_rdevhppl;
+        __u32 ioddev_pavssch;
+        __u32 ioddev_pavcount;
+        __u32 ioddev_pavcntim;
+        __u32 ioddev_pavfptim;
+        __u32 ioddev_pavddtim;
+        __u32 ioddev_pavcqtim;
+        __u32 ioddev_pavdatim;
+        __u32 ioddev_pavdbtim;
+        __u32 ioddev_pavirtim;
+        __u32 ioddev_pavcc3s;
+    };
+    struct d6r4 //  TODO
+    {
+        __u8 filler[20];
+        __u32 iodcad_rdevsid;
+        __s32 iodcad_status;
+        __u8 iodcad_calsss[40];
+        __u8 dhm[6];
+        __s16 iodcad_psflen;
+        __u8 dhm[32];
+        __u8 iodcad_caldata[192];
+        __u8 iodcad_calsss2[4];
+    };    
+    struct d6r4ext1 //  TODO
+    {   //  iodcad_caldssc
+        __u8 iodcad_calssc1[80];
+        __u8 iodcad_calssc2[80];
+        
+    };    
+    struct d6r4ext2 //  TODO
+    {
+        __u8 iodcad_calpsf[192];
+    };
 
     struct d6r5				//not tested
     {
@@ -2022,7 +2777,46 @@ DOMAIN-X, where X is a number of domain
         __u8 filler[20];
         __u32 ioddsb_rdevsid;
     };
-
+    struct d6r9
+    {
+        __u8 filler[20];
+        __u8 iodats_rdevtype;
+        __u8 iodats_rdevclas;
+        __u16 iodats_rdevdvid;
+        __u8 iodats_calmodln;
+        __u8 iodats_rdevlpm;
+        __u16 iodats_rdevdev;   //    device number in packed decimal
+        __u32 iodats_rdevsid;
+        __u8 iodats_rdevchps[8];
+        __u16 iodats_rdevcuid;  //    unit id in packed decimal.
+        __u8 iodats_rdevcumn;
+        __u8 iodats_calflags;    
+    };
+    struct d6r10    //  TODO
+    {
+        __u8 filler[20];
+        __s16 iodals_caldatof;  //  byte offset, relative from the start of this record, to the iodals_data library statistics area
+        __s16 iodals_caldatln;  //  length, in bytes, of the iodals_data library statistics area
+    };
+    struct d6r10ext {
+        __u8 filler[d6r10->iodals_caldatof];
+        __u8 iodals_data[d6r10->iodals_caldatln];
+    };
+    struct d6r11    //  TODO
+    {
+        __u8 filler[20];
+        __u8 iodson_rdevtype;
+        __u8 iodson_rdevclas;
+        __u16 iodson_rdevdvid;
+        __u8 iodson_calmodln;
+        __u8 iodson_rdevlpm;
+        __u16 iodson_rdevdev;
+        __u32 iodson_rdevsid;
+        __u8 iodson_rdevchps[8];
+        __u16 iodson_rdevcuid;
+        __u8 iodson_rdevcumn;
+        __u8 iodson_calflags;
+    };
     struct d6r12
     {
         __u8 filler[20];
@@ -2063,11 +2857,136 @@ DOMAIN-X, where X is a number of domain
         __u16 iodddv_rdevdev;
         __u16 ibm;
     };
+
+    struct d6r16  //  TODO
+    {  
+        __u8 filler[20];
+        __u32 iodmdv_rdevsid;
+        __u16 iodmdv_rdevdev;
+        __u8 iodmdv_rdevpim;
+        __u8 iodmdv_rdevpam;
+        __u8 iodmdv_rdevchps[8];
+    };
     struct d6r17
     {
         __u8 filler[20];
         __u8 ioddch_calchpid;
         __u8 ibm[3];
+    };
+    struct d6r18    //  TODO
+    {
+        __u8 filler[20];
+        __u32 iodton_rdevsid;
+        __u16 iodton_rdevdev;
+        __u16 ibm;
+        __u32 iodton_thrdlys;
+        __u64 iodton_thriorte;
+    };
+     struct d6r19    //  TODO
+    {
+        __u8 filler[20];
+        __u32 iodtof_rdevsid;
+        __u16 iodtof_rdevdev;
+        __u16 ibm;
+        __u32 iodtof_thrdlys;
+        __u64 iodtof_thriorte;
+    };
+    struct d6r20    //  TODO
+    {
+        __u8 filler[20];
+        __u8 iodstc_calcode;
+        __u8 ibm;
+        __u16 ibm2;
+        __u8 iodstc_rdevtype;
+        __u8 iodstc_rdevclas;
+        __u16 iodstc_rdevdvid;  //  device type number in packed decimal. see iodstc_rdevdviv for its source.
+        __u8 iodstc_calmodln;
+        __u8 iodstc_rdevlpm;
+        __u16 iodstc_rdevdev;   //  device number in packed decimal
+        __u32 iodstc_rdevsid;
+        __u8 iodstc_rdevchps[8];
+        __u16 iodstc_rdevcuid;
+        __u8 iodstc_rdevcumn;
+        __u8 iodstc_calflags;                  
+        __u8 iodstc_rdevser[6]; //  dasd volume serial identifier
+        __u16 ibm3;
+        __u32 iodstc_calrdevsid;
+        __u16 iodstc_calrdevdev;    //  packed decimal
+        __u8 iodstc_rdevpvfg;                    
+        __u8 ibm4;
+        __u16 iodstc_rdevhppl;
+        __u16 ibm5;
+
+    };
+    struct d6r21ext {
+        __u8 iodvsw_1[4];
+        __u8 iodvsw_2[4];
+        __u8 iodvsw_3[8];
+    };
+    struct d6r21    //  TODO
+    {
+        __u8 filler[20];
+        __u32 iodvsw_rdevsid;
+        __u16 iodvsw_rdevdev;
+        __u8 iodvsw_lanfsv;
+        __u8 ibm;
+        __u16 iodvsw_lanipto;
+        __u8 iodvsw_lanrdd_osaportn;
+        __u8 ibm2;
+        __u8 iodvsw_vmduser[8];
+        __u8 iodvsw_nictxbyt[8];
+        __u8 iodvsw_nictxbythi[4];
+        __u8 iodvsw_nictxbytlo[4];
+        __u64 iodvsw_nicrxbyt;
+        __u8 iodvsw_nicrxbythi[4];
+        __u8 iodvsw_nicrxbytlo[4];
+        __u32 iodvsw_nictxpkt;
+        __u32 iodvsw_nictxdsc;
+        __u32 iodvsw_nictxerr;
+        __u32 iodvsw_nicrxpkt;
+        __u32 iodvsw_nicrxdsc;
+        __u32 iodvsw_nicrxerr;
+        __u64 iodvsw_vqscttod;
+        __u32 iodvsw_sigwrite;
+        __u32 iodvsw_sigread;
+        __u32 iodvsw_sigsync;
+        __u32 iodvsw_activate;
+        __u32 iodvsw_pcircvd;
+        __u32 iodvsw_pciproc;
+        __u32 iodvsw_vqsiqbfc;
+        __u32 iodvsw_vqsiqovr;
+        __u32 iodvsw_vqsoqbfc;
+        __u32 iodvsw_vqsoqovr;
+        __u32 iodvsw_vqsiqadv;
+        __u32 iodvsw_lantrid;
+        __u32 iodvsw_lansusr;
+        __u32 iodvsw_lanmgipa;
+        __u8 iodvsw_mgswieuser[8];
+        __u8 iodvsw_mgnicmac[6];
+        __u8 ibm3[2];
+        __u8 iodvsw_osamac[6];
+        __u8 iodvsw_nictranp;
+        __u8 ibm4;
+        __u8 iodvsw_lanid[16];
+        __u8 iodvsw_lockreqs[8];
+
+        d6r21ext iodvsw-1[10];
+
+        __u8 iodvsw_vqsomlvl[4];
+        __u16 iodvsw_swpintsc;
+        __u8 iodvsw_vqsdvmac[6];
+        __u32 iodvsw_vqsmrkct;
+        __u32 iodvsw_vqsmrpct;
+        __u32 iodvsw_vqsmrrct;
+        __u32 iodvsw_vqsmtoct;
+        __u32iodvsw_vqslcsct;
+        __u32 iodvsw_vqslcrct;
+        __u8 iodvsw_txreqs[8];
+
+        d6r21ext iodvsw-2[3];
+
+        __u8 iodvsw_stkdefershi[4];
+        __u8 iodvsw_stkdeferslo[4];
     };
     struct d6r22
     {
@@ -2423,10 +3342,40 @@ DOMAIN-X, where X is a number of domain
         __u32 vndlsd_nicmgpor;
         __u32 vndlsd_nicmgifi;
     };
+    struct d10r1    //  TODO
+    {
+        __u8 filler[20];
+        __s16 apledt_caldatof;
+        __s16 apledt_caldatln;
+        __u8 apledt_userid[8];
+        __u8 apledt_mdgprod[16];
+        __u8 apledt_status;
+        __u8 ibm[3];
+    };
+        struct d10r1ext    //  TODO
+    {
+        __u8 filler[d10r1->apledt_caldatof];
+        __u8 apledt_adata[d10r1->apledt_caldatln];
+    };
+    struct d10r2    //  TODO
+    {
+        __u8 filler[20];
+        __s16 aplsdt_caldatof;
+        __s16 aplsdt_caldatln;
+        __u8 aplsdt_userid[8];
+        __u8 aplsdt_mdgprod[16];
+        __u8 aplsdt_status;                    
+        __u8 ibm[3];
+    };
+    struct d10r2ext   //  TODO
+    {
+        __u8 filler[d10r2->aplsdt_caldatof];
+        __u8 aplsdt_adata[d10r2->aplsdt_caldatln];
+    };
+
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif	/* _RECSTRUCT_H */
-
+#endif	/* _V53_RECORDS_H */

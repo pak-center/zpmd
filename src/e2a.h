@@ -30,14 +30,12 @@
  *               Martin Peschke <peschke@fh-brandenburg.de>
 */ 
 
-
 #ifndef _E2A_H
 #define	_E2A_H
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
 
 static __u8 ebcdic2ascii[256] =
 {
@@ -111,16 +109,7 @@ static __u8 ebcdic2ascii[256] =
           0x38, 0x39, 0x07, 0x07, 0x9A, 0x07, 0x07, 0x07
 };
 
-void e2a(__u8 *ptr, unsigned int size)
-{
- unsigned int i;
- __u8 tmp;
-  for (i=0;i<size;i++)
-    {
-      tmp = (__u8) ptr[i];
-      ptr[i] = ebcdic2ascii[tmp];
-    }
-}
+void e2a(__u8 *ptr, unsigned int size);
 
 #ifdef	__cplusplus
 }

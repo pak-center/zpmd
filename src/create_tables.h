@@ -18,12 +18,20 @@
 */
 
 
+#ifndef _CREATE_TABLES_H
+#define	_CREATE_TABLES_H
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+int create_tables(*mysql);
 //MYSQL TABLE DEFINITION BEGIN
 
 //DOMAIN-0's TABLE
 const char *query_create_d0r1 =
  "CREATE TABLE IF NOT EXISTS d0r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytsyp_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytsyp_plsabnct INT(1) UNSIGNED, \
@@ -49,14 +57,12 @@ const char *query_create_d0r1 =
  sytsyp_plstmrce INT(1) UNSIGNED, \
  sytsyp_plsprvsc INT(1) UNSIGNED, \
  sytsyp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytsyp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 //d0r2 check and correct time values for total cpu time
 const char *query_create_d0r2 =
  "CREATE TABLE IF NOT EXISTS d0r2 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytprp_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytprp_plscuhaf SMALLINT(1) UNSIGNED, \
@@ -71,13 +77,11 @@ const char *query_create_d0r2 =
  sytprp_pfxspint BIGINT(1) UNSIGNED, \
  sytprp_pfxspinc INT(1) UNSIGNED, \
  sytprp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytprp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r3 =
  "CREATE TABLE IF NOT EXISTS d0r3 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytrsg_sysrsvpg INT(1) UNSIGNED, \
  sytrsg_rsacplok INT(1) UNSIGNED, \
@@ -185,13 +189,11 @@ const char *query_create_d0r3 =
  sytrsg_rsashrce INT(1) UNSIGNED, \
  sytrsg_rsaresac INT(1) UNSIGNED, \
  sytrsg_rsaresbc INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r4 =
  "CREATE TABLE IF NOT EXISTS d0r4 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytrsp_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytrsp_plsstlfr INT(1) UNSIGNED, \
@@ -206,13 +208,11 @@ const char *query_create_d0r4 =
  sytrsp_pfxcputy TINYINT(1) UNSIGNED, \
  sytrsp_plsalecl INT(1) UNSIGNED, \
  sytrsp_plsalecg INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytrsp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r5 =
  "CREATE TABLE IF NOT EXISTS d0r5 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytxsp_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytxsp_pfxpgin INT(1) UNSIGNED, \
@@ -223,13 +223,11 @@ const char *query_create_d0r5 =
  sytxsp_plspgmrx INT(1) UNSIGNED, \
  sytxsp_plspgmrd INT(1) UNSIGNED, \
  sytxsp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytxsp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r6 =
  "CREATE TABLE IF NOT EXISTS d0r6 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytasg_cal90ful INT(1) UNSIGNED, \
  sytasg_cal91ful INT(1) UNSIGNED, \
@@ -245,13 +243,11 @@ const char *query_create_d0r6 =
  sytasg_calavgm2 INT(1) UNSIGNED, \
  sytasg_caldmpav INT(1) UNSIGNED, \
  sytasg_caldmpiu INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r7 =
  "CREATE TABLE IF NOT EXISTS d0r7 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytshs_systanss INT(1) UNSIGNED, \
  sytshs_systadcs INT(1) UNSIGNED, \
@@ -265,13 +261,32 @@ const char *query_create_d0r7 =
  sytshs_qdgsysca INT(1) UNSIGNED, \
  sytshs_qdglkcnt INT(1) UNSIGNED, \
  sytshs_qdgdisks INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+const char *query_create_d0r9 =
+    "CREATE TABLE IF NOT EXISTS d0r9 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+        sytcpc_hfcount INT(1) UNSIGNED, \
+        sytcpc_hfchbusy BLOB, \
+        sytcpc_hfchsim BLOB, \
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+//=============================== TODO
+const char *query_create_d0r10 =
+    "CREATE TABLE IF NOT EXISTS d0r10 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+        
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+//======================================
+
+
+
 
 const char *query_create_d0r11 =
  "CREATE TABLE IF NOT EXISTS d0r11 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytcom_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytcom_plsisevm INT(1) UNSIGNED, \
@@ -336,13 +351,11 @@ const char *query_create_d0r11 =
  sytcom_plsiseve INT(1) UNSIGNED, \
  sytcom_plsistve INT(1) UNSIGNED, \
  sytcom_plsisuve INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytcom_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r12 =
  "CREATE TABLE IF NOT EXISTS d0r12 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytuwt_caltidl INT(1) UNSIGNED, \
  sytuwt_caltsvm INT(1) UNSIGNED, \
@@ -379,13 +392,11 @@ const char *query_create_d0r12 =
  sytuwt_calcrzap INT(1) SIGNED, \
  sytuwt_calcrifl INT(1) SIGNED, \
  sytuwt_calcrzip INT(1) SIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r13 =
  "CREATE TABLE IF NOT EXISTS d0r13 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytscp_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytscp_plseqkad SMALLINT(1) UNSIGNED, \
@@ -394,13 +405,11 @@ const char *query_create_d0r13 =
  sytscp_plsefrc3 SMALLINT(1) UNSIGNED, \
  sytscp_plsdspcn INT(1) UNSIGNED, \
  sytscp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytscp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r14 =
  "CREATE TABLE IF NOT EXISTS d0r14 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytxsg_xstxbget INT(1) UNSIGNED, \
  sytxsg_xstxbrel INT(1) UNSIGNED, \
@@ -432,13 +441,11 @@ const char *query_create_d0r14 =
  sytxsg_tcmfshvm INT(1) UNSIGNED, \
  sytxsg_tcmrdct INT(1) UNSIGNED, \
  sytxsg_tcmpin4k INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r15 =
  "CREATE TABLE IF NOT EXISTS d0r15 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytcug_lcutnpar TINYINT(1) UNSIGNED, \
  sytcug_lcutflag TINYINT(1) UNSIGNED, \
@@ -454,13 +461,11 @@ const char *query_create_d0r15 =
  sytcug_lparcaf INT(1) UNSIGNED, \
  sytcug_cpudedct SMALLINT(1) UNSIGNED, \
  sytcug_cpushard SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r19 =
  "CREATE TABLE IF NOT EXISTS d0r19 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytsyg_xctmsact BINARY(8), \
  sytsyg_ftrdone INT(1) UNSIGNED, \
@@ -484,13 +489,11 @@ const char *query_create_d0r19 =
  sytsyg_vl3mname CHAR(8), \
  sytsyg_vl3caf INT(1) UNSIGNED, \
  sytsyg_vl3cpnam CHAR(16), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r21 =
  "CREATE TABLE IF NOT EXISTS d0r21 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytsxg_sxssize INT(1) UNSIGNED, \
  sytsxg_rsasxavl INT(1) UNSIGNED, \
@@ -508,13 +511,11 @@ const char *query_create_d0r21 =
  sytsxg_rsasxact INT(1) UNSIGNED, \
  sytsxg_rsasxbct INT(1) UNSIGNED, \
  sytsxg_rsarsvsy INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d0r22 =
  "CREATE TABLE IF NOT EXISTS d0r22 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sytsxp_pfxcpuad SMALLINT(1) UNSIGNED, \
  sytsxp_plssxrep INT(1) UNSIGNED, \
@@ -533,35 +534,29 @@ const char *query_create_d0r22 =
  sytsxp_plsspgfc INT(1) UNSIGNED, \
  sytsxp_plssprfc INT(1) UNSIGNED, \
  sytsxp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sytsxp_pfxcpuad)) ENGINE=INNODB";
-
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 //DOMAIN-1's TABLE
 const char *query_create_d1r1 =
  "CREATE TABLE IF NOT EXISTS d1r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  mtrepr_edomains TINYINT(1) UNSIGNED, \
  ibm TINYINT(1) UNSIGNED, \
  mtrepr_config SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r3=
  "CREATE TABLE IF NOT EXISTS d1r3 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrsus_lostrcct INT(1) UNSIGNED, \
  PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time,mtrsus_lostrcct)) ENGINE=INNODB";
+ INDEX (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r4 =
  "CREATE TABLE IF NOT EXISTS d1r4 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  mtrsys_hcpcpepp BINARY(8), \
  mtrsys_hcpcpeid CHAR(8), \
@@ -592,13 +587,11 @@ const char *query_create_d1r4 =
  mtrsys_cpushard SMALLINT(1) UNSIGNED, \
  mtrsys_cpucapab INT(1) UNSIGNED, \
  mtrsys_scpcapab INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r5=
  "CREATE TABLE IF NOT EXISTS d1r5 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrprp_pfxcpuad SMALLINT(1) UNSIGNED, \
  mtrprp_pfxidmdl CHAR(2), \
@@ -609,13 +602,11 @@ const char *query_create_d1r5=
  mtrprp_pfxtype TINYINT(1) UNSIGNED, \
  mtrprp_caluded CHAR(8), \
  mtrprp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time,mtrprp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r9=
  "CREATE TABLE IF NOT EXISTS d1r9 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrspr_interval INT(1) SIGNED, \
  mtrspr_hfrate INT(1) SIGNED, \
@@ -623,61 +614,114 @@ const char *query_create_d1r9=
  ibm TINYINT(1) UNSIGNED, \
  mtrspr_hdomains TINYINT(1) UNSIGNED, \
  mtrspr_config SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, mtrspr_interval)) ENGINE=INNODB";
-
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r10 =
  "CREATE TABLE IF NOT EXISTS d1r10 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrscm_caltod TIMESTAMP, \
  mtrscm_calbyct INT(1) UNSIGNED, \
  mtrscm_calcmd VARCHAR(256), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, mtrscm_caltod)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+const char *query_create_d1r11 =
+    "CREATE TABLE IF NOT EXISTS d1r11 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r12 =
  "CREATE TABLE IF NOT EXISTS d1r12 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r13 =
  "CREATE TABLE IF NOT EXISTS d1r13 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+////
+
+const char *query_create_d1r15 =
+    "CREATE TABLE IF NOT EXISTS d1r15 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+        mtrusr_vmduser CHAR(8), \
+        mtrusr_vmdcpuad SMALLINT UNSIGNED, \
+        __u8 mtrusr_vmdmode TINYINT UNSIGNED, \
+        __u8 mtrusr_vmdcpuct TINYINT UNSIGNED, \
+        __u8 mtrusr_calstat TINYINT UNSIGNED, \
+        __u8 mtrusr_calmode TINYINT UNSIGNED, \
+        __u8 mtrusr_vmdstype TINYINT UNSIGNED, \
+        __u8 mtrusr_calsharf TINYINT UNSIGNED, \
+        __u32 mtrusr_vmdrelsh INT UNSIGNED, \
+        __u32 mtrusr_vmdabssh INT UNSIGNED, \
+        __u32 mtrusr_vmdssize INT UNSIGNED, \
+        __u8 mtrusr_vmdactno[8];
+        __u8 mtrusr_vmdgrpn[8];
+        __u32 mtrusr_vmdmxrvp INT UNSIGNED, \
+        __u64 mtrusr_caltodon BIGINT UNSIGNED, \
+        __u8 mtrusr_vmdbyval[8];
+        __u32 mtrusr_vmdmxshr INT UNSIGNED, \
+        __u64 mtrusr_ascdefsz BIGINT UNSIGNED, \
+        __u8 mtrusr_caldefhi[4] INT UNSIGNED, \
+        __u8 mtrusr_caldeflo[4] INT UNSIGNED, \
+        __u32 mtrusr_calcpct INT UNSIGNED, \
+        __u32 mtrusr_calzipct INT UNSIGNED, \
+        __u32 mtrusr_calzapct INT UNSIGNED, \
+        __u32 mtrusr_califlct INT UNSIGNED, \
+        __u8 mtrusr_vmdcfgem TINYINT UNSIGNED, \
+        __u8 mtrusr_vmdpust TINYINT UNSIGNED, \
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+ const char *query_create_d1r16 =
+    "CREATE TABLE IF NOT EXISTS d1r16 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+        mtrsch_srmbiasi INT UNSIGNED, \
+        __u8 mtrsch_srmtslic[8];
+        mtrsch_srmtshot[8];
+        mtrsch_srmbiasd SMALLINT UNSIGNED, \
+        mtrsch_srmldgus SMALLINT UNSIGNED, \
+        mtrsch_srmp1ldg INT UNSIGNED, \
+        mtrsch_srmp2ldg INT UNSIGNED, \
+        mtrsch_srmp3ldg INT UNSIGNED, \
+        mtrsch_srmldgcp INT UNSIGNED, \
+        mtrsch_srmp1wss INT UNSIGNED, \
+        mtrsch_srmp2wss INT UNSIGNED, \
+        mtrsch_srmp3wss INT UNSIGNED, \
+        mtrsch_srmwssmp INT UNSIGNED, \
+        mtrsch_srml1dsp INT UNSIGNED, \
+        mtrsch_srml2dsp INT UNSIGNED, \
+        mtrsch_srml3dsp INT UNSIGNED, \
+        mtrsch_srmxpctg INT UNSIGNED, \
+        mtrsch_srmflags TINYINT UNSIGNED, \
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+ ///
 
 const char *query_create_d1r17 =
  "CREATE TABLE IF NOT EXISTS d1r17 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrxsg_xstotalb BINARY(8), \
  mtrxsg_sysxtsiz BINARY(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r18 =
  "CREATE TABLE IF NOT EXISTS d1r18 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrccc_cpucapab INT(1) UNSIGNED, \
  mtrccc_scpcapab INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r19 =
  "CREATE TABLE IF NOT EXISTS d1r19 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrqdc_rdevdev SMALLINT(1) UNSIGNED, \
  mtrqdc_vmduser CHAR(8), \
@@ -711,61 +755,82 @@ const char *query_create_d1r19 =
  mtrqdc_qsbsiglt INT(1) UNSIGNED, \
  mtrqdc_sumofpin INT(1) UNSIGNED, \
  mtrqdc_sumunpin INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, mtrqdc_vdevdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d1r20=
  "CREATE TABLE IF NOT EXISTS d1r20 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  mtrhpp_hppoolnm SMALLINT(1) UNSIGNED, \
  mtrhpp_hpptoken SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, mtrhpp_hppoolnm, mtrhpp_hpptoken)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 
 //DOMAIN-2's TABLE
 const char *query_create_d2r1 =
  "CREATE TABLE IF NOT EXISTS d2r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  sclrdb_vmduser CHAR(8), \
  sclrdb_calflags TINYINT(1) UNSIGNED, \
  sclrdb_rdevsid INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC, sclrdb_vmduser DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d2r2 =
  "CREATE TABLE IF NOT EXISTS d2r2 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  sclrdc_vmduser CHAR(8), \
  sclrdc_calflags TINYINT(1) UNSIGNED, \
  sclrdc_rdevsid INT(1) UNSIGNED, \
  sclrdc_calbyct INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC, sclrdc_vmduser DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d2r3 =
  "CREATE TABLE IF NOT EXISTS d2r3 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  sclwrr_vmduser CHAR(8), \
  sclwrr_calflags TINYINT(1) UNSIGNED, \
  sclwrr_rdevsid INT(1) UNSIGNED, \
  sclwrr_calbyct INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC, sclwrr_vmduser DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
+
+const char *query_create_d2r4 =
+    "CREATE TABLE IF NOT EXISTS d2r4 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+const char *query_create_d2r5 =
+    "CREATE TABLE IF NOT EXISTS d2r5 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+const char *query_create_d2r6 =
+    "CREATE TABLE IF NOT EXISTS d2r6 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+const char *query_create_d2r7 =
+    "CREATE TABLE IF NOT EXISTS d2r7 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
+const char *query_create_d2r8 =
+    "CREATE TABLE IF NOT EXISTS d2r8 (\
+        id BIGINT AUTO_INCREMENT, \
+        time TIMESTAMP, \
+
+    PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d2r9=
  "CREATE TABLE IF NOT EXISTS d2r9 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sclshr_vmduser CHAR(8), \
  sclshr_vmdrelsh INT(1) UNSIGNED, \
@@ -774,23 +839,19 @@ const char *query_create_d2r9=
  sclshr_vmdmxshr INT(1) UNSIGNED, \
  sclshr_vmdcfgem TINYINT(1) UNSIGNED, \
  sclshr_vmdpust TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sclshr_vmduser)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d2r10=
  "CREATE TABLE IF NOT EXISTS d2r10 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sclsqd_vmduser CHAR(8), \
  sclsqd_calflag1 TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, sclsqd_vmduser)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d2r11=
  "CREATE TABLE IF NOT EXISTS d2r11 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  scliop_vmduser CHAR(8), \
  scliop_ipqupr1 INT(1) UNSIGNED, \
@@ -801,25 +862,21 @@ const char *query_create_d2r11=
  scliop_sysiopqh TINYINT(1) UNSIGNED, \
  scliop_sysioplo TINYINT(1) UNSIGNED, \
  scliop_sysiophi TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, scliop_vmduser)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d2r12=
  "CREATE TABLE IF NOT EXISTS d2r12 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  sclsca_vmduser CHAR(8), \
  sclsca_vmdcfgem TINYINT(1) UNSIGNED, \
  sclsca_vmdpust TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time,sclsca_vmduser)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 //DOMAIN-3's TABLE
 const char *query_create_d3r1=
  "CREATE TABLE IF NOT EXISTS d3r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  storsg_calssubt INT(1) UNSIGNED, \
  storsg_rsasavfr INT(1) UNSIGNED, \
@@ -899,13 +956,11 @@ const char *query_create_d3r1=
  storsg_rsaemdfr INT(1) UNSIGNED, \
  storsg_rsaswpwt INT(1) UNSIGNED, \
  storsg_rsaswp2g INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r2=
  "CREATE TABLE IF NOT EXISTS d3r2 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  storsp_pfxcpuad SMALLINT(1) UNSIGNED, \
  storsp_plspread INT(1) UNSIGNED, \
@@ -975,14 +1030,12 @@ const char *query_create_d3r2=
  storsp_plsasfcl INT(1) UNSIGNED, \
  storsp_plsasfcg INT(1) UNSIGNED, \
  storsp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, storsp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 const char *query_create_d3r3=
  "CREATE TABLE IF NOT EXISTS d3r3 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoshr_sntname CHAR(8), \
  stoshr_sdfidnum SMALLINT(1) SIGNED, \
@@ -1004,14 +1057,12 @@ const char *query_create_d3r3=
  stoshr_ascctprg INT(1) UNSIGNED, \
  stoshr_aschllc INT(1) UNSIGNED, \
  stoshr_aschlrc INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoshr_sntname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 const char *query_create_d3r4=
  "CREATE TABLE IF NOT EXISTS d3r4 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoasp_calvser CHAR(6), \
  stoasp_rdevdev SMALLINT(1) UNSIGNED, \
@@ -1034,40 +1085,34 @@ const char *query_create_d3r4=
  stoasp_cpvlokat INT(1) UNSIGNED, \
  stoasp_cpvalocd INT(1) UNSIGNED, \
  stoasp_scgssch INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoasp_calvser, stoasp_rdevdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 const char *query_create_d3r5=
  "CREATE TABLE IF NOT EXISTS d3r5 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoshs_sdffn CHAR(8), \
  stoshs_sdfft CHAR(8), \
  stoshs_sdfcltim INT(1) UNSIGNED, \
  stoshs_sdfidnum SMALLINT(1) SIGNED, \
  stoshs_sdfclass CHAR(1), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoshs_sdffn)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r6=
  "CREATE TABLE IF NOT EXISTS d3r6 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoshp_sdffn CHAR(8), \
  stoshp_sdfft CHAR(8), \
  stoshp_sdfcltim INT(1) UNSIGNED, \
  stoshp_sdfidnum SMALLINT(1) SIGNED, \
  stoshp_sdfclass CHAR(1), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoshp_sdffn)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r7=
  "CREATE TABLE IF NOT EXISTS d3r7 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoatc_cpvolser CHAR(6), \
  stoatc_calflags TINYINT(1) UNSIGNED, \
@@ -1079,22 +1124,20 @@ const char *query_create_d3r7=
  stoatc_rdevdev SMALLINT(1) UNSIGNED, \
  PRIMARY KEY (id), \
  INDEX (id), \
- UNIQUE INDEX (time, stoatc_cpvolser)) ENGINE=INNODB";
+ UNIQUE INDEX (time, stoatc_cpvolser)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r8=
  "CREATE TABLE IF NOT EXISTS d3r8 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stobpg_pgdbr_tbl BINARY(80), \
  stobpg_pgdbm_tbl BINARY(80), \
  stobpg_pgdbs_tbl BINARY(80), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r9=
  "CREATE TABLE IF NOT EXISTS d3r9 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoxsg_xstmigs INT(1) UNSIGNED, \
  stoxsg_xstblkdm INT(1) UNSIGNED, \
@@ -1107,25 +1150,21 @@ const char *query_create_d3r9=
  stoxsg_xstcpdal INT(1) UNSIGNED, \
  stoxsg_xstguest INT(1) UNSIGNED, \
  stoxsg_xstnoio BINARY(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r10=
  "CREATE TABLE IF NOT EXISTS d3r10 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoxsu_vmduser CHAR(8), \
  stoxsu_calxstor INT(1) UNSIGNED, \
  stoxsu_calorgin INT(1) UNSIGNED, \
  stoxsu_calxslim INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoxsu_vmduser)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r11=
  "CREATE TABLE IF NOT EXISTS d3r11 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoass_cpvolser CHAR(6), \
  stoass_rdevsid INT(1) UNSIGNED, \
@@ -1139,13 +1178,11 @@ const char *query_create_d3r11=
  stoass_scmssch SMALLINT(1) UNSIGNED, \
  stoass_scgssch INT(1) UNSIGNED, \
  stoass_rdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoass_cpvolser)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r12=
  "CREATE TABLE IF NOT EXISTS d3r12 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoasc_ascusrid CHAR(8), \
  stoasc_ascname CHAR(24), \
@@ -1153,23 +1190,19 @@ const char *query_create_d3r12=
  stoasc_ascdefsz BINARY(8), \
  stoasc_caldefhi BINARY(4), \
  stoasc_caldeflo BINARY(4), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoasc_ascusrid, stoasc_ascname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r13=
  "CREATE TABLE IF NOT EXISTS d3r13 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoasd_ascusrid CHAR(8), \
  stoasd_ascname CHAR(24), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoasd_ascusrid, stoasd_ascname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r14=
  "CREATE TABLE IF NOT EXISTS d3r14 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoasi_ascusrid CHAR(8), \
  stoasi_ascname CHAR(24), \
@@ -1194,26 +1227,22 @@ const char *query_create_d3r14=
  stoasi_aschllc INT(1) UNSIGNED, \
  stoasi_aschlrc INT(1) UNSIGNED, \
  stoasi_ascctplka CHAR(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoasi_ascusrid, stoasi_ascname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r15=
  "CREATE TABLE IF NOT EXISTS d3r15 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoshl_sdffn CHAR(8), \
  stoshl_sdfft CHAR(8), \
  stoshl_sdfcltim INT(1) UNSIGNED, \
  stoshl_sdfidnum SMALLINT(1) SIGNED, \
  stoshl_sdfclass CHAR(1), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoshl_sdffn)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r16=
  "CREATE TABLE IF NOT EXISTS d3r16 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoshd_sdffn CHAR(8), \
  stoshd_sdfft CHAR(8), \
@@ -1234,13 +1263,11 @@ const char *query_create_d3r16=
  stoshd_ascctprg INT(1) UNSIGNED, \
  stoshd_aschllc INT(1) UNSIGNED, \
  stoshd_aschlrc INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoshd_sdffn)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r17=
  "CREATE TABLE IF NOT EXISTS d3r17 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stovdk_mdiouser CHAR(8), \
  stovdk_qdisname CHAR(24), \
@@ -1249,13 +1276,11 @@ const char *query_create_d3r17=
  stovdk_mdilinks INT(1) UNSIGNED, \
  stovdk_calsize INT(1) UNSIGNED, \
  stovdk_qdiiocnt INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stovdk_mdiouser, stovdk_mdiovdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r18=
  "CREATE TABLE IF NOT EXISTS d3r18 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stoscs_poolname CHAR(8), \
  stoscs_frxroot INT(1) UNSIGNED, \
@@ -1266,13 +1291,11 @@ const char *query_create_d3r18=
  stoscs_freef INT(1) UNSIGNED, \
  stoscs_current INT(1) UNSIGNED, \
  stoscs_maxalloc INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stoscs_poolname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r19=
  "CREATE TABLE IF NOT EXISTS d3r19 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stosxg_rsasxuot INT(1) UNSIGNED, \
  stosxg_rsasxctg INT(1) UNSIGNED, \
@@ -1291,13 +1314,11 @@ const char *query_create_d3r19=
  stosxg_rsasxqmn INT(1) UNSIGNED, \
  stosxg_rsasxqra INT(1) UNSIGNED, \
  stosxg_rsasxrpm INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d3r20=
  "CREATE TABLE IF NOT EXISTS d3r20 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  stosxp_pfxcpuad SMALLINT(1) UNSIGNED, \
  stosxp_plssutkc INT(1) UNSIGNED, \
@@ -1327,15 +1348,13 @@ const char *query_create_d3r20=
  stosxp_plssxcsp INT(1) UNSIGNED, \
  stosxp_plssxald INT(1) UNSIGNED, \
  stosxp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, stosxp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 //DOMAIN-4's TABLE
 const char *query_create_d4r5=
  "CREATE TABLE IF NOT EXISTS d4r5 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  usedfc_vmduser CHAR(8), \
  usedfc_vmdcpuad SMALLINT(1) UNSIGNED, \
@@ -1343,24 +1362,20 @@ const char *query_create_d4r5=
  usedfc_vmdcfgem TINYINT(1) UNSIGNED, \
  usedfc_vmdpust TINYINT(1) UNSIGNED, \
  usedfc_oldputyp TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, usedfc_vmduser, usedfc_vmdcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d4r6=
  "CREATE TABLE IF NOT EXISTS d4r6 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  usedtc_vmduser CHAR(8), \
  usedtc_vmdcpuad SMALLINT(1) UNSIGNED, \
  usedtc_vmdputyp TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, usedtc_vmduser, usedtc_vmdcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d4r7=
  "CREATE TABLE IF NOT EXISTS d4r7 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  userdc_vmduser CHAR(8), \
  userdc_vmdcpuad SMALLINT(1) UNSIGNED, \
@@ -1369,15 +1384,13 @@ const char *query_create_d4r7=
  userdc_newputyp TINYINT(1) UNSIGNED, \
  userdc_vmdcfgem TINYINT(1) UNSIGNED, \
  userdc_vmdpust TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, userdc_vmduser, userdc_vmdcpuad, userdc_newcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 /*
 const char *query_create_d4r9 =
  "CREATE TABLE IF NOT EXISTS d4r9 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
 
  useate_vmduser CHAR(8), \
@@ -1452,13 +1465,11 @@ const char *query_create_d4r9 =
  useate_vmdttmp BINARY(8), \
  useate_vmdvtms BINARY(8), \
  useate_vmdttms BINARY(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 */
 const char *query_create_d4r10 =
  "CREATE TABLE IF NOT EXISTS d4r10 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  useite_vmduser CHAR(8), \
  useite_vmdcpuad SMALLINT(1) UNSIGNED, \
@@ -1520,36 +1531,30 @@ const char *query_create_d4r10 =
  useite_vmdputyp TINYINT(1) UNSIGNED, \
  useite_vmdcfgem TINYINT(1) UNSIGNED, \
  useite_vmdpust TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC, useite_vmdsvmid DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 //DOMAIN-5's TABLE
 const char *query_create_d5r1=
  "CREATE TABLE IF NOT EXISTS d5r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prcvon_pfxcpuad SMALLINT(1) UNSIGNED, \
  prcvon_pfxidmdl CHAR(2), \
  prcvon_pfxidser CHAR(3), \
  prcvon_pfxidver TINYINT(1) UNSIGNED, \
  prcvon_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prcvon_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r2=
  "CREATE TABLE IF NOT EXISTS d5r2 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prcvof_pfxcpuad SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prcvof_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r3=
  "CREATE TABLE IF NOT EXISTS d5r3 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prcprp_pfxcpuad SMALLINT(1) UNSIGNED, \
  prcprp_pfxdspcs INT(1) UNSIGNED, \
@@ -1563,33 +1568,27 @@ const char *query_create_d5r3=
  prcprp_hfuserm INT(1) UNSIGNED, \
  prcprp_plsstlct BLOB(256), \
  prcprp_pfxcputy TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prcprp_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r6=
  "CREATE TABLE IF NOT EXISTS d5r6 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prccfn_pfxcpuad SMALLINT(1) UNSIGNED, \
  prccfn_pcccsu TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prccfn_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r7=
  "CREATE TABLE IF NOT EXISTS d5r7 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prccff_pfxcpuad SMALLINT(1) UNSIGNED, \
  prccff_pcccsu TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prccff_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r8=
  "CREATE TABLE IF NOT EXISTS d5r8 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prciop_csciopid INT(1) UNSIGNED, \
  prciop_cscvblbc INT(1) UNSIGNED, \
@@ -1608,13 +1607,11 @@ const char *query_create_d5r8=
  prciop_cscmdsb BINARY(8), \
  prciop_cscmdub BINARY(8), \
  prciop_cscmddb BINARY(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prciop_csciopid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r9=
  "CREATE TABLE IF NOT EXISTS d5r9 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prcapc_cryvserv BINARY(8), \
  prcapc_cryrserv BINARY(8), \
@@ -1627,13 +1624,11 @@ const char *query_create_d5r9=
  prcapc_crynovpr BINARY(8), \
  prcapc_crynovpc BINARY(8), \
  prcapc_crynorpr BINARY(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r11=
  "CREATE TABLE IF NOT EXISTS d5r11 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prcins_pfxcpuad INT(1) UNSIGNED, \
  prcins_plskeyik INT(1) UNSIGNED, \
@@ -1688,13 +1683,11 @@ const char *query_create_d5r11=
  prcins_plsctrs INT(1) UNSIGNED, \
  prcins_plsctcs INT(1) UNSIGNED, \
  prcins_plscths INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prcins_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d5r12=
  "CREATE TABLE IF NOT EXISTS d5r12 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  prcdia_pfxcpuad INT(1) UNSIGNED, \
  prcdia_plsdgx00 INT(1) UNSIGNED, \
@@ -1891,16 +1884,14 @@ const char *query_create_d5r12=
  prcdia_plsdg3f8 INT(1) UNSIGNED, \
  prcdia_plsdg3fc INT(1) UNSIGNED, \
  prcdia_plstotdi INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, prcdia_pfxcpuad)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 //DOMAIN-6's TABLE
 
 const char *query_create_d6r1 =
  "CREATE TABLE IF NOT EXISTS d6r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodvon_rdevtype TINYINT(1) UNSIGNED, \
  iodvon_rdevclas TINYINT(1) UNSIGNED, \
@@ -1954,23 +1945,19 @@ const char *query_create_d6r1 =
  iodvon_edevlun8 CHAR(8), \
  iodvon_prefpath TINYINT(1) UNSIGNED, \
  iodvon_rdevhppl SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodvon_rdevdev, iodvon_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r2 =
  "CREATE TABLE IF NOT EXISTS d6r2 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodvof_rdevsid INT(1) UNSIGNED, \
  iodvof_rdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodvof_rdevdev, iodvof_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r5 =
  "CREATE TABLE IF NOT EXISTS d6r5 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodatd_rdevtype TINYINT(1) UNSIGNED, \
  iodatd_rdevclas TINYINT(1) UNSIGNED, \
@@ -1983,61 +1970,49 @@ const char *query_create_d6r5 =
  iodatd_rdevcuid SMALLINT(1) UNSIGNED, \
  iodatd_rdevcumn TINYINT(1) UNSIGNED, \
  iodatd_calflags TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodatd_rdevdev, iodatd_rdevdvid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r6 =
  "CREATE TABLE IF NOT EXISTS d6r6 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  ioddtd_rdevsid INT(1) UNSIGNED, \
  ioddtd_rdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, ioddtd_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r7 =
  "CREATE TABLE IF NOT EXISTS d6r7 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodenb_rdevsid INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodenb_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r8 =
  "CREATE TABLE IF NOT EXISTS d6r8 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  ioddsb_rdevsid INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, ioddsb_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r12 =
  "CREATE TABLE IF NOT EXISTS d6r12 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodsof_rdevsid INT(1) UNSIGNED, \
  iodsof_rdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodsof_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r13 =
  "CREATE TABLE IF NOT EXISTS d6r13 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodmon_rdevsid INT(1) UNSIGNED, \
  iodmon_rdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodmon_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r14 =
  "CREATE TABLE IF NOT EXISTS d6r14 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodmof_rdevsid INT(1) UNSIGNED, \
  iodmof_rdevdev SMALLINT(1) UNSIGNED, \
@@ -2052,32 +2027,26 @@ const char *query_create_d6r14 =
  iodmof_scmirtim INT(1) UNSIGNED, \
  iodmof_scgssch INT(1) UNSIGNED, \
  iodmof_scgcount INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodmof_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r15 =
  "CREATE TABLE IF NOT EXISTS d6r15 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodddv_rdevsid INT(1) UNSIGNED, \
  iodddv_rdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodddv_rdevsid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r17 =
  "CREATE TABLE IF NOT EXISTS d6r17 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  ioddch_calchpid INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, ioddch_calchpid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r22 =
  "CREATE TABLE IF NOT EXISTS d6r22 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodvsf_lanowner CHAR(8), \
  iodvsf_lanname CHAR(8), \
@@ -2091,13 +2060,11 @@ const char *query_create_d6r22 =
  iodvsf_lanrdd_rsn TINYINT(1) UNSIGNED, \
  iodvsf_vqstate TINYINT(1) UNSIGNED, \
  iodvsf_vqsreas SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodvsf_lanowner, iodvsf_lanname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r23 =
  "CREATE TABLE IF NOT EXISTS d6r23 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodvsr_lanowner CHAR(8), \
  iodvsr_lanname CHAR(8), \
@@ -2109,14 +2076,12 @@ const char *query_create_d6r23 =
  iodvsr_mgswieuser CHAR(8), \
  iodvsr_mgnicmac BINARY(6), \
  iodvsr_swpgroup CHAR(8), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodvsr_lanowner, iodvsr_lanname)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 const char *query_create_d6r24 =
  "CREATE TABLE IF NOT EXISTS d6r24 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodszi_rdevdev SMALLINT(1) UNSIGNED, \
  iodszi_dskstat TINYINT(1) UNSIGNED, \
@@ -2200,13 +2165,11 @@ const char *query_create_d6r24 =
  iodszi_pth8blksw INT(1) UNSIGNED, \
  iodszi_pth8seeko INT(1) UNSIGNED, \
  iodszi_pth8qdepth INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodszi_rdevdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r25 =
  "CREATE TABLE IF NOT EXISTS d6r25 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodqda_rdevdev SMALLINT(1) UNSIGNED, \
  iodqda_vmduser CHAR(8), \
@@ -2215,13 +2178,11 @@ const char *query_create_d6r25 =
  iodqda_qdinpct SMALLINT(1) UNSIGNED, \
  iodqda_qdioutct SMALLINT(1) UNSIGNED, \
  iodqda_status BINARY(4), \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodqda_rdevdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r26 =
  "CREATE TABLE IF NOT EXISTS d6r26 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodqds_rdevdev SMALLINT(1) UNSIGNED, \
  iodqds_qdiocsgr INT(1) UNSIGNED, \
@@ -2249,13 +2210,11 @@ const char *query_create_d6r26 =
  iodqds_qsbsiglt INT(1) UNSIGNED, \
  iodqds_sumofpin INT(1) UNSIGNED, \
  iodqds_sumunpin INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodqds_rdevdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r27 =
  "CREATE TABLE IF NOT EXISTS d6r27 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodqdd_rdevdev SMALLINT(1) UNSIGNED, \
  iodqdd_qdiocsgr INT(1) UNSIGNED, \
@@ -2283,13 +2242,11 @@ const char *query_create_d6r27 =
  iodqdd_qsbsiglt INT(1) UNSIGNED, \
  iodqdd_sumofpin INT(1) UNSIGNED, \
  iodqdd_sumunpin INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodqdd_rdevdev)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r28 =
  "CREATE TABLE IF NOT EXISTS d6r28 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodhpp_hppoolnm SMALLINT(1) UNSIGNED, \
  iodhpp_hpptoken SMALLINT(1) UNSIGNED, \
@@ -2299,36 +2256,30 @@ const char *query_create_d6r28 =
  iodhpp_hppfails INT(1) UNSIGNED, \
  iodhpp_hppminct INT(1) UNSIGNED, \
  iodhpp_hppmaxct INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodhpp_hpptoken)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r29 =
  "CREATE TABLE IF NOT EXISTS d6r29 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodhpc_hppoolnm SMALLINT(1) UNSIGNED, \
  iodhpc_hpptoken SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodhpc_hppoolnm)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d6r30 =
  "CREATE TABLE IF NOT EXISTS d6r30 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  iodlpt_cuidssid SMALLINT(1) UNSIGNED, \
  iodlpt_cuipvopr_old TINYINT(1) UNSIGNED, \
  iodlpt_cuipvopr_new TINYINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, iodlpt_cuidssid)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 
 //DOMAIN-7's TABLE
 const char *query_create_d7r1 =
  "CREATE TABLE IF NOT EXISTS d7r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  seksek_rdevsid INT(1) UNSIGNED, \
  seksek_calcurcy SMALLINT(1) UNSIGNED, \
@@ -2342,16 +2293,14 @@ const char *query_create_d7r1 =
  seksek_vdevdev SMALLINT(1) UNSIGNED, \
  seksek_caluser CHAR(8), \
  seksek_rvdevdev SMALLINT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- INDEX (time DESC)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 //DOMAIN-8's TABLE
 
 //NEED TEST OF INDEXES --UNIQUE
 const char *query_create_d8r1 =
  "CREATE TABLE IF NOT EXISTS d8r1 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP, \
  vndses_vdevsub SMALLINT(1) UNSIGNED, \
  vndses_owner CHAR(8), \
@@ -2402,13 +2351,11 @@ const char *query_create_d8r1 =
  vndses_stkreqlo INT(1) UNSIGNED, \
  vndses_stkdefershi INT(1) UNSIGNED, \
  vndses_stkdeferslo INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, vndses_vdevsub, vndses_owner)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d8r2 =
  "CREATE TABLE IF NOT EXISTS d8r2 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  vndlsu_lanowner CHAR(8), \
  vndlsu_lanname CHAR(8), \
@@ -2416,13 +2363,11 @@ const char *query_create_d8r2 =
  vndlsu_nicbase SMALLINT(1) UNSIGNED, \
  vndlsu_nicmgpor INT(1) UNSIGNED, \
  vndlsu_nicmgifi INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, vndlsu_lanowner, vndlsu_lanname, vndlsu_nicowner, vndlsu_nicbase)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
 const char *query_create_d8r3 =
  "CREATE TABLE IF NOT EXISTS d8r3 (\
- id INT AUTO_INCREMENT, \
+ id BIGINT AUTO_INCREMENT, \
  time TIMESTAMP UNIQUE, \
  vndlsd_lanowner CHAR(8), \
  vndlsd_lanname CHAR(8), \
@@ -2430,586 +2375,10 @@ const char *query_create_d8r3 =
  vndlsd_nicbase SMALLINT(1) UNSIGNED, \
  vndlsd_nicmgpor INT(1) UNSIGNED, \
  vndlsd_nicmgifi INT(1) UNSIGNED, \
- PRIMARY KEY (id), \
- INDEX (id), \
- UNIQUE INDEX (time, vndlsd_lanowner, vndlsd_lanname, vndlsd_nicowner, vndlsd_nicbase)) ENGINE=INNODB";
+ PRIMARY KEY (id)) ENGINE=ARCHIVE";
 
-//MYSQL TABLE DEFINITION END
-//////////////////////////////////////////////////////////////////////////////
-//MYSQL CREATE TABLES BEGIN
-//DOMAIN-0
-//d0r1
-if (mysql_query(&mysql, query_create_d0r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
+#ifdef	__cplusplus
 }
-//d0r2
-if (mysql_query(&mysql, query_create_d0r2))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r3
-if (mysql_query(&mysql, query_create_d0r3))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r4
-if (mysql_query(&mysql, query_create_d0r4))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r5
-if (mysql_query(&mysql, query_create_d0r5))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r6
-if (mysql_query(&mysql, query_create_d0r6))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r7
-if (mysql_query(&mysql, query_create_d0r7))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
+#endif
 
-//d0r11
-if (mysql_query(&mysql, query_create_d0r11))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r12
-if (mysql_query(&mysql, query_create_d0r12))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r13
-if (mysql_query(&mysql, query_create_d0r13))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r14
-if (mysql_query(&mysql, query_create_d0r14))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r15
-if (mysql_query(&mysql, query_create_d0r15))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r21
-if (mysql_query(&mysql, query_create_d0r21))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d0r22
-if (mysql_query(&mysql, query_create_d0r22))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//DOMAIN-1
-//d1r1
-if (mysql_query(&mysql, query_create_d1r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r3
-if (mysql_query(&mysql, query_create_d1r3))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r4
-if (mysql_query(&mysql, query_create_d1r4))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r5
-if (mysql_query(&mysql, query_create_d1r5))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r9
-if (mysql_query(&mysql, query_create_d1r9))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r10
-if (mysql_query(&mysql, query_create_d1r10))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r12
-if (mysql_query(&mysql, query_create_d1r12))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r13
-if (mysql_query(&mysql, query_create_d1r13))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r17
-if (mysql_query(&mysql, query_create_d1r17))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r18
-if (mysql_query(&mysql, query_create_d1r18))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d1r20
-if (mysql_query(&mysql, query_create_d1r20))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-
-//DOMAIN-2
-//d2r1
-if (mysql_query(&mysql, query_create_d2r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r2
-if (mysql_query(&mysql, query_create_d2r2))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r3
-if (mysql_query(&mysql, query_create_d2r3))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-/*
-//d2r4
-if (mysql_query(&mysql, query_create_d2r4))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r5
-if (mysql_query(&mysql, query_create_d2r5))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r6
-if (mysql_query(&mysql, query_create_d2r6))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-*/
-//d2r9
-if (mysql_query(&mysql, query_create_d2r9))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r10
-if (mysql_query(&mysql, query_create_d2r10))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r11
-if (mysql_query(&mysql, query_create_d2r11))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d2r12
-if (mysql_query(&mysql, query_create_d2r12))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//DOMAIN-3
-//d3r1
-if (mysql_query(&mysql, query_create_d3r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r2
-if (mysql_query(&mysql, query_create_d3r2))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r3
-if (mysql_query(&mysql, query_create_d3r3))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r4
-if (mysql_query(&mysql, query_create_d3r4))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r5
-if (mysql_query(&mysql, query_create_d3r5))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r6
-if (mysql_query(&mysql, query_create_d3r6))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r7
-if (mysql_query(&mysql, query_create_d3r7))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r8
-if (mysql_query(&mysql, query_create_d3r8))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r9
-if (mysql_query(&mysql, query_create_d3r9))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r10
-if (mysql_query(&mysql, query_create_d3r10))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r11
-if (mysql_query(&mysql, query_create_d3r11))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r12
-if (mysql_query(&mysql, query_create_d3r12))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r13
-if (mysql_query(&mysql, query_create_d3r13))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r14
-if (mysql_query(&mysql, query_create_d3r14))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r15
-if (mysql_query(&mysql, query_create_d3r15))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//d3r16
-if (mysql_query(&mysql, query_create_d3r16))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r17
-if (mysql_query(&mysql, query_create_d3r17))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r18
-if (mysql_query(&mysql, query_create_d3r18))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r19
-if (mysql_query(&mysql, query_create_d3r19))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d3r20
-if (mysql_query(&mysql, query_create_d3r20))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//DOMAIN-4
-//d4r5
-if (mysql_query(&mysql, query_create_d4r5))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d4r6
-if (mysql_query(&mysql, query_create_d4r6))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d4r7
-if (mysql_query(&mysql, query_create_d4r7))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-/*
-//d4r9
-if (mysql_query(&mysql, query_create_d4r9))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-*/
-//d4r10
-if (mysql_query(&mysql, query_create_d4r10))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-
-//DOMAIN-5
-//d5r1
-if (mysql_query(&mysql, query_create_d5r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d5r2
-if (mysql_query(&mysql, query_create_d5r2))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d5r3
-if (mysql_query(&mysql, query_create_d5r3))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//d5r6
-if (mysql_query(&mysql, query_create_d5r6))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d5r7
-if (mysql_query(&mysql, query_create_d5r7))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d5r8
-if (mysql_query(&mysql, query_create_d5r8))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d5r9
-if (mysql_query(&mysql, query_create_d5r9))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//d5r11
-if (mysql_query(&mysql, query_create_d5r11))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d5r12
-if (mysql_query(&mysql, query_create_d5r12))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-
-
-//DOMAIN-6
-//d6r2
-if (mysql_query(&mysql, query_create_d6r2))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r6
-if (mysql_query(&mysql, query_create_d6r6))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r7
-if (mysql_query(&mysql, query_create_d6r7))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r8
-if (mysql_query(&mysql, query_create_d6r8))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r12
-if (mysql_query(&mysql, query_create_d6r12))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r13
-if (mysql_query(&mysql, query_create_d6r13))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r14
-if (mysql_query(&mysql, query_create_d6r14))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r15
-if (mysql_query(&mysql, query_create_d6r15))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r17
-if (mysql_query(&mysql, query_create_d6r17))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r22
-if (mysql_query(&mysql, query_create_d6r22))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r23
-if (mysql_query(&mysql, query_create_d6r23))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r24
-if (mysql_query(&mysql, query_create_d6r24))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r25
-if (mysql_query(&mysql, query_create_d6r25))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r26
-if (mysql_query(&mysql, query_create_d6r26))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r27
-if (mysql_query(&mysql, query_create_d6r27))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r28
-if (mysql_query(&mysql, query_create_d6r28))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r29
-if (mysql_query(&mysql, query_create_d6r29))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d6r30
-if (mysql_query(&mysql, query_create_d6r30))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//DOMAIN-7
-//d7r1
-if (mysql_query(&mysql, query_create_d7r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
-//DOMAIN-8
-//d8r1
-if (mysql_query(&mysql, query_create_d8r1))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d8r2
-if (mysql_query(&mysql, query_create_d8r2))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-//d8r3
-if (mysql_query(&mysql, query_create_d8r3))
-{
-   syslog(LOG_ERR, "%s\n", mysql_error(&mysql));
-   exit(1);
-}
-
+#endif	/* _CREATE_TABLES_H */
